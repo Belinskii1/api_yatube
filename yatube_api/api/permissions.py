@@ -1,9 +1,9 @@
-from rest_framework import viewsets
-
-from posts.models import Post
-from .serializers import PostSerializer
+from rest_framework import permissions
 
 
-class PostViewSet(viewsets.ModelViewSet):
-    queryset = Post.objects.all()
-    serializer_class = PostSerializer
+class IsAuthorOrReadOnly(permissions.BasePermission):
+
+    def has_object_permission(self, request, view, obj):
+        if request.method in permissions.SAFE_METHODS:
+            return True
+        return obj.author == request.user
