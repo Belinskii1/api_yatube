@@ -2,8 +2,10 @@ from django.shortcuts import get_object_or_404
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
-from posts.models import Post
-from api.serializers import PostSerializer
+from posts.models import Post, Group
+from api.serializers import PostSerializer, GroupSerializer
+from rest_framework import viewsets
+from rest_framework import permissions
 
 
 @api_view(['GET', 'POST'])
@@ -37,3 +39,13 @@ def api_posts_detail(request, pk):
     serializer = PostSerializer(post)
     return Response(serializer.data)
 
+
+
+
+class GroupViewSet(viewsets.ModelViewSet):
+    queryset = Group.objects.all()
+    serializer_class = GroupSerializer
+    http_method_names = ['get', 'post']
+    permission_classes = [
+        permissions.IsAuthenticatedOrReadOnly
+    ]

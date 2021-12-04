@@ -4,12 +4,15 @@ from django.contrib import admin
 from django.urls import include, path
 
 from yatube_api.schema import schema
+from rest_framework.authtoken import views
 
 
 urlpatterns = [
     path('', schema),
     path('admin/', admin.site.urls),
     path('api/v1/', include('api.urls', namespace='api')),
+    path('auth/', include('djoser.urls')),
+    path('auth/', include('djoser.urls.jwt')),
 ]
 
 
