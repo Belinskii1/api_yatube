@@ -4,7 +4,6 @@ from django.contrib import admin
 from django.urls import include, path
 
 from yatube_api.schema import schema
-from rest_framework.authtoken import views
 
 
 urlpatterns = [

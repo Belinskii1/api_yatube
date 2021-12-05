@@ -7,7 +7,7 @@ def schema(request):
     generator = SchemaGenerator(title='Yandex Praktikum')
     getted_schema = generator.get_schema() or {
         'info': {'title': 'Yandex Praktikum'}, 'paths': {}
-    } 
+    }
     schema = {
         'title': getted_schema['info']['title'],
         'endpoints': []
