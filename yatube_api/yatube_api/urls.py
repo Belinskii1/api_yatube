@@ -9,8 +9,6 @@ urlpatterns = [
     path('', schema),
     path('admin/', admin.site.urls),
     path('api/v1/', include('api.urls', namespace='api')),
-    path('auth/', include('djoser.urls')),
-    path('auth/', include('djoser.urls.jwt')),
 ]
 
 
