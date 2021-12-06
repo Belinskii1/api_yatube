@@ -8,7 +8,7 @@ from yatube_api.schema import schema
 urlpatterns = [
     path('', schema),
     path('admin/', admin.site.urls),
-    path('api/v1/', include('api.urls', namespace='api')),
+    path('api/', include('api.urls', namespace='api')),
 ]
 
 

@@ -1,5 +1,5 @@
 from posts.models import Comment, Group, Post, User
-from rest_framework import serializers
+from rest_framework import serializers  # isort здесь ничего не меняет.
 
 
 class PostSerializer(serializers.ModelSerializer):
@@ -9,7 +9,7 @@ class PostSerializer(serializers.ModelSerializer):
     )
 
     class Meta:
-        fields = ('id', 'text', 'author', 'image', 'pub_date', 'group')
+        fields = '__all__'
         model = Post
         read_only_fields = ('pub_date', 'group',)
 
@@ -28,7 +28,7 @@ class CommentSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Comment
-        fields = ('id', 'author', 'post', 'text', 'created')
+        fields = '__all__'
 
 
 class UserSerializer(serializers.ModelSerializer):
