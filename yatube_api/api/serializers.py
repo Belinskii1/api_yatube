@@ -1,6 +1,6 @@
-from posts.models import Comment, Group, Post, User
 from rest_framework import serializers
-# прогнал весь проект через isort, здесь ничего не меняется
+
+from posts.models import Comment, Group, Post, User
 
 
 class PostSerializer(serializers.ModelSerializer):

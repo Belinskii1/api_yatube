@@ -4,12 +4,12 @@ from rest_framework.routers import DefaultRouter
 
 from .views import CommentViewSet, GroupViewSet, PostViewSet
 
-router = DefaultRouter()
+router_v1 = DefaultRouter()
 
-router.register('v1/groups', GroupViewSet)
-router.register('v1/posts', PostViewSet, basename='posts')
-router.register(
-    r'v1/posts/(?P<post_id>\d+)/comments',
+router_v1.register('groups', GroupViewSet)
+router_v1.register('posts', PostViewSet, basename='posts')
+router_v1.register(
+    r'posts/(?P<post_id>\d+)/comments',
     CommentViewSet,
     basename='comments'
 )
@@ -19,5 +19,5 @@ app_name = 'api'
 
 urlpatterns = [
     path('v1/api-token-auth/', views.obtain_auth_token),
-    path('', include(router.urls)),
+    path('v1/', include(router_v1.urls)),
 ]

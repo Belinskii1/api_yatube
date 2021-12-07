@@ -5,6 +5,4 @@ class IsAuthorOrReadOnly(permissions.BasePermission):
 
     def has_object_permission(self, request, view, obj):
         r = request
-        return all(
-            [obj.author == r.user or r.method in permissions.SAFE_METHODS]
-        )
+        return obj.author == r.user or r.method in permissions.SAFE_METHODS
